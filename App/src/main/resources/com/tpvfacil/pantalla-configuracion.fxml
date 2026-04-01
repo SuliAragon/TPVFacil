@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.tpvfacil.core.ui.ConfiguracionController"
+      spacing="0"
+      style="-fx-background-color: white;">
+
+    <!-- Cabecera -->
+    <HBox style="-fx-background-color: #1B4F8A; -fx-padding: 14 24;" alignment="CENTER_LEFT" spacing="10">
+        <Label text="⚙" style="-fx-font-size: 20px; -fx-text-fill: white;"/>
+        <Label text="Configuración" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+    </HBox>
+
+    <!-- TabPane -->
+    <TabPane VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+
+        <!-- TAB 1: Datos del negocio -->
+        <Tab text="Datos del negocio">
+            <VBox spacing="16" style="-fx-padding: 24;">
+                <Label text="Información fiscal del negocio"
+                       style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+                <GridPane hgap="12" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="140" maxWidth="160"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                    </columnConstraints>
+
+                    <Label text="Nombre del negocio *" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="campoNombreNegocio" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="NIF / CIF *" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="campoNif" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <Label text="Dirección completa *" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField fx:id="campoDireccion" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                </GridPane>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button text="Guardar" onAction="#guardarNegocio"
+                            style="-fx-background-color: #27AE60; -fx-text-fill: white;
+                                   -fx-background-radius: 4; -fx-cursor: hand; -fx-padding: 8 20;"/>
+                    <Label fx:id="labelGuardadoNegocio" text="" style="-fx-font-size: 12px;"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- TAB 2: Verifactu -->
+        <Tab text="Verifactu">
+            <VBox spacing="16" style="-fx-padding: 24;">
+                <Label text="Certificado digital para Verifactu (AEAT)"
+                       style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+                <GridPane hgap="12" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="140" maxWidth="160"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                    </columnConstraints>
+
+                    <Label text="Certificado .p12/.pfx" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <HBox spacing="8" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                        <TextField fx:id="campoRutaCertificado" HBox.hgrow="ALWAYS"
+                                   promptText="Ruta al certificado..." editable="false"/>
+                        <Button text="Examinar..." onAction="#seleccionarCertificado"
+                                style="-fx-background-color: #1B4F8A; -fx-text-fill: white;
+                                       -fx-background-radius: 4; -fx-cursor: hand;"/>
+                    </HBox>
+
+                    <Label text="Contraseña" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <PasswordField fx:id="campoPasswordCertificado" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                                   promptText="Contraseña del certificado"/>
+                </GridPane>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button text="Guardar" onAction="#guardarVerifactu"
+                            style="-fx-background-color: #27AE60; -fx-text-fill: white;
+                                   -fx-background-radius: 4; -fx-cursor: hand; -fx-padding: 8 20;"/>
+                    <Button text="Test sandbox AEAT" onAction="#testSandbox"
+                            style="-fx-background-color: #1B4F8A; -fx-text-fill: white;
+                                   -fx-background-radius: 4; -fx-cursor: hand; -fx-padding: 8 16;"/>
+                    <Label fx:id="labelEstadoCertificado" text="" style="-fx-font-size: 12px;"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- TAB 3: Impresión -->
+        <Tab text="Impresión">
+            <VBox spacing="16" style="-fx-padding: 24;">
+                <Label text="Impresoras y configuración de papel"
+                       style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+                <GridPane hgap="12" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="140" maxWidth="160"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                    </columnConstraints>
+
+                    <Label text="Impresora tickets" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="campoImpresoraTickets" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                               promptText="Nombre de la impresora"/>
+
+                    <Label text="Impresora cocina" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="campoImpresoraCocina" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                               promptText="Solo para hostelería (opcional)"/>
+
+                    <Label text="Ancho del papel" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <HBox spacing="16" alignment="CENTER_LEFT" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                        <RadioButton fx:id="radio58mm" text="58 mm" toggleGroup="$grupoPapel"/>
+                        <RadioButton fx:id="radio80mm" text="80 mm (recomendado)" toggleGroup="$grupoPapel"/>
+                    </HBox>
+                </GridPane>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button text="Guardar" onAction="#guardarImpresion"
+                            style="-fx-background-color: #27AE60; -fx-text-fill: white;
+                                   -fx-background-radius: 4; -fx-cursor: hand; -fx-padding: 8 20;"/>
+                    <Button text="Imprimir ticket de prueba" onAction="#imprimirTicketPrueba"
+                            style="-fx-background-color: #1B4F8A; -fx-text-fill: white;
+                                   -fx-background-radius: 4; -fx-cursor: hand; -fx-padding: 8 16;"/>
+                    <Label fx:id="labelEstadoImpresion" text="" style="-fx-font-size: 12px;"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- TAB 4: Licencia -->
+        <Tab text="Licencia">
+            <VBox spacing="16" style="-fx-padding: 24;">
+                <Label text="Estado de la licencia"
+                       style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+                <Label fx:id="labelEstadoLicencia" text=""/>
+
+                <Separator/>
+
+                <GridPane hgap="12" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="140" maxWidth="160"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                    </columnConstraints>
+
+                    <Label text="ID del equipo" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <HBox spacing="8" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                        <Label fx:id="labelFingerprint"
+                               style="-fx-font-family: monospace; -fx-font-size: 14px;
+                                      -fx-background-color: #f5f5f5; -fx-padding: 4 8;
+                                      -fx-border-color: #ddd; -fx-border-radius: 3;"/>
+                        <Button text="📋 Copiar" onAction="#copiarFingerprint"
+                                style="-fx-background-color: #95a5a6; -fx-text-fill: white;
+                                       -fx-background-radius: 4; -fx-cursor: hand;"/>
+                    </HBox>
+
+                    <Label text="Clave de licencia" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="campoClaveLicencia" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                               promptText="TPVF-XXXX-XXXX-XXXX-XXXX"
+                               style="-fx-font-family: monospace;"/>
+                </GridPane>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button text="Activar licencia" onAction="#activarLicencia"
+                            style="-fx-background-color: #27AE60; -fx-text-fill: white;
+                                   -fx-font-weight: bold; -fx-background-radius: 4;
+                                   -fx-cursor: hand; -fx-padding: 8 20;"/>
+                    <Label fx:id="labelResultadoActivacion" text="" style="-fx-font-size: 12px;"/>
+                </HBox>
+            </VBox>
+        </Tab>
+    </TabPane>
+
+    <!-- Barra inferior -->
+    <HBox style="-fx-background-color: #f8f8f8; -fx-padding: 10 24; -fx-border-color: #eee;"
+          alignment="CENTER_RIGHT">
+        <Button text="Cerrar" onAction="#cerrar"
+                style="-fx-background-color: #95a5a6; -fx-text-fill: white;
+                       -fx-background-radius: 4; -fx-cursor: hand; -fx-padding: 8 20;"/>
+    </HBox>
+</VBox>

@@ -1,0 +1,10 @@
+{
+  "alwaysUpdateLinks": true,
+  "promptDelete": false,
+  "defaultViewMode": "preview",
+  "foldIndent": true,
+  "showUnsupportedFiles": false,
+  "newFileLocation": "current",
+  "attachmentFolderPath": "assets",
+  "defaultMarkdownMode": "source"
+}

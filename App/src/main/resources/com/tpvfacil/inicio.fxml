@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.tpvfacil.core.ui.InicioController"
+            style="-fx-background-color: #1B4F8A;">
+
+    <!-- CENTRO: Botones de módulo -->
+    <center>
+        <VBox spacing="30" alignment="CENTER">
+            <!-- Logo / Título -->
+            <VBox spacing="8" alignment="CENTER">
+                <Label text="TPVFácil"
+                       style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Label text="Sistema de Punto de Venta"
+                       style="-fx-font-size: 14px; -fx-text-fill: rgba(255,255,255,0.7);"/>
+            </VBox>
+
+            <!-- Botones de módulo -->
+            <HBox spacing="30" alignment="CENTER">
+                <Button fx:id="btnHosteleria" text="🍽  Hostelería"
+                        onAction="#abrirHosteleria"
+                        prefWidth="200" prefHeight="120"
+                        style="-fx-background-color: white; -fx-text-fill: #1B4F8A;
+                               -fx-font-size: 18px; -fx-font-weight: bold;
+                               -fx-background-radius: 12; -fx-cursor: hand;
+                               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 2);"/>
+
+                <Button fx:id="btnComercio" text="🛍  Comercio"
+                        onAction="#abrirComercio"
+                        prefWidth="200" prefHeight="120"
+                        style="-fx-background-color: white; -fx-text-fill: #1B4F8A;
+                               -fx-font-size: 18px; -fx-font-weight: bold;
+                               -fx-background-radius: 12; -fx-cursor: hand;
+                               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 2);"/>
+            </HBox>
+
+            <!-- Botón configuración -->
+            <Button text="⚙  Configuración" onAction="#abrirConfiguracion"
+                    style="-fx-background-color: transparent; -fx-text-fill: rgba(255,255,255,0.7);
+                           -fx-font-size: 13px; -fx-cursor: hand; -fx-border-color: transparent;
+                           -fx-underline: true;"/>
+        </VBox>
+    </center>
+
+    <!-- ABAJO: Banner DEMO -->
+    <bottom>
+        <HBox fx:id="bannerDemo" spacing="12" alignment="CENTER"
+              style="-fx-background-color: #F39C12; -fx-padding: 8 16;">
+            <Label fx:id="labelTicketsDemo"
+                   text="⚠ MODO DEMO — Tickets hoy: 0/20"
+                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: black;"/>
+            <Button text="Activar licencia →" onAction="#abrirActivacion"
+                    style="-fx-background-color: #1B4F8A; -fx-text-fill: white;
+                           -fx-font-size: 12px; -fx-background-radius: 4; -fx-cursor: hand;
+                           -fx-padding: 4 10;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

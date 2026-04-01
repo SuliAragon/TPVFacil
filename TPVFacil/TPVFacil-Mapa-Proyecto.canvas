@@ -1,0 +1,812 @@
+{
+  "nodes": [
+    {
+      "id": "claude",
+      "type": "file",
+      "file": "CLAUDE.md",
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 60,
+      "color": "1"
+    },
+    {
+      "id": "g00",
+      "type": "group",
+      "label": "00 — Meta",
+      "x": -720,
+      "y": -280,
+      "width": 360,
+      "height": 220,
+      "color": "6"
+    },
+    {
+      "id": "n00_01",
+      "type": "file",
+      "file": "00-meta/00-01-glosario.md",
+      "x": -700,
+      "y": -250,
+      "width": 320,
+      "height": 50
+    },
+    {
+      "id": "n00_02",
+      "type": "file",
+      "file": "00-meta/00-02-decisiones-pendientes.md",
+      "x": -700,
+      "y": -190,
+      "width": 320,
+      "height": 50,
+      "color": "4"
+    },
+    {
+      "id": "n00_03",
+      "type": "file",
+      "file": "00-meta/00-03-arbol-dependencias.md",
+      "x": -700,
+      "y": -130,
+      "width": 320,
+      "height": 50
+    },
+    {
+      "id": "g01",
+      "type": "group",
+      "label": "01 — Arquitectura",
+      "x": 400,
+      "y": -320,
+      "width": 360,
+      "height": 260,
+      "color": "5"
+    },
+    {
+      "id": "n01_01",
+      "type": "file",
+      "file": "01-arquitectura/01-01-estructura-proyecto.md",
+      "x": 420,
+      "y": -290,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n01_02",
+      "type": "file",
+      "file": "01-arquitectura/01-02-stack-tecnologico.md",
+      "x": 420,
+      "y": -235,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n01_03",
+      "type": "file",
+      "file": "01-arquitectura/01-03-estructura-paquetes-java.md",
+      "x": 420,
+      "y": -180,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n01_04",
+      "type": "file",
+      "file": "01-arquitectura/01-04-configuracion-maven.md",
+      "x": 420,
+      "y": -125,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "g10",
+      "type": "group",
+      "label": "10 — Base de Datos",
+      "x": -720,
+      "y": 50,
+      "width": 360,
+      "height": 190,
+      "color": "4"
+    },
+    {
+      "id": "n10_01",
+      "type": "file",
+      "file": "10-base-de-datos/10-01-esquema-completo.md",
+      "x": -700,
+      "y": 80,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n10_02",
+      "type": "file",
+      "file": "10-base-de-datos/10-02-migraciones.md",
+      "x": -700,
+      "y": 135,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n10_03",
+      "type": "file",
+      "file": "10-base-de-datos/10-03-backup.md",
+      "x": -700,
+      "y": 190,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "g06",
+      "type": "group",
+      "label": "06 — Licencias",
+      "x": 400,
+      "y": 50,
+      "width": 360,
+      "height": 220,
+      "color": "2"
+    },
+    {
+      "id": "n06_01",
+      "type": "file",
+      "file": "06-licencias/06-01-modo-demo.md",
+      "x": 420,
+      "y": 80,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n06_02",
+      "type": "file",
+      "file": "06-licencias/06-02-activacion-clave.md",
+      "x": 420,
+      "y": 135,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n06_03",
+      "type": "file",
+      "file": "06-licencias/06-03-opciones-plataforma-pago.md",
+      "x": 420,
+      "y": 190,
+      "width": 320,
+      "height": 45,
+      "color": "4"
+    },
+    {
+      "id": "n06_04",
+      "type": "file",
+      "file": "06-licencias/06-04-hardware-fingerprint.md",
+      "x": 420,
+      "y": 245,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "g03",
+      "type": "group",
+      "label": "03 — App Core",
+      "x": -180,
+      "y": 120,
+      "width": 360,
+      "height": 320,
+      "color": "3"
+    },
+    {
+      "id": "n03_01",
+      "type": "file",
+      "file": "03-app-core/03-01-main-java.md",
+      "x": -160,
+      "y": 150,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n03_02",
+      "type": "file",
+      "file": "03-app-core/03-02-base-de-datos-sqlite.md",
+      "x": -160,
+      "y": 205,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n03_03",
+      "type": "file",
+      "file": "03-app-core/03-03-modelos-datos.md",
+      "x": -160,
+      "y": 260,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n03_05",
+      "type": "file",
+      "file": "03-app-core/03-05-configuracion-negocio.md",
+      "x": -160,
+      "y": 315,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n03_06",
+      "type": "file",
+      "file": "03-app-core/03-06-cierre-caja.md",
+      "x": -160,
+      "y": 370,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n03_07",
+      "type": "file",
+      "file": "03-app-core/03-07-impresion-tickets.md",
+      "x": -160,
+      "y": 425,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "g02",
+      "type": "group",
+      "label": "02 — Verifactu ⚖️",
+      "x": -720,
+      "y": 310,
+      "width": 360,
+      "height": 360,
+      "color": "1"
+    },
+    {
+      "id": "n02_01",
+      "type": "file",
+      "file": "02-verifactu/02-01-que-es-verifactu.md",
+      "x": -700,
+      "y": 340,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n02_02",
+      "type": "file",
+      "file": "02-verifactu/02-02-flujo-tecnico.md",
+      "x": -700,
+      "y": 395,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n02_03",
+      "type": "file",
+      "file": "02-verifactu/02-03-clases-java.md",
+      "x": -700,
+      "y": 450,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n02_04",
+      "type": "file",
+      "file": "02-verifactu/02-04-xml-schema.md",
+      "x": -700,
+      "y": 505,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n02_05",
+      "type": "file",
+      "file": "02-verifactu/02-05-api-aeat.md",
+      "x": -700,
+      "y": 560,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n02_06",
+      "type": "file",
+      "file": "02-verifactu/02-06-certificados.md",
+      "x": -700,
+      "y": 615,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n02_07",
+      "type": "file",
+      "file": "02-verifactu/02-07-qr-ticket.md",
+      "x": -700,
+      "y": 670,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "g04",
+      "type": "group",
+      "label": "04 — TPV Hostelería 🍽",
+      "x": -720,
+      "y": 730,
+      "width": 360,
+      "height": 320,
+      "color": "3"
+    },
+    {
+      "id": "n04_01",
+      "type": "file",
+      "file": "04-tpv-hosteleria/04-01-vision-general.md",
+      "x": -700,
+      "y": 760,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n04_02",
+      "type": "file",
+      "file": "04-tpv-hosteleria/04-02-gestion-mesas.md",
+      "x": -700,
+      "y": 815,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n04_03",
+      "type": "file",
+      "file": "04-tpv-hosteleria/04-03-comandas.md",
+      "x": -700,
+      "y": 870,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n04_04",
+      "type": "file",
+      "file": "04-tpv-hosteleria/04-04-impresora-cocina.md",
+      "x": -700,
+      "y": 925,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n04_05",
+      "type": "file",
+      "file": "04-tpv-hosteleria/04-05-cobro-hosteleria.md",
+      "x": -700,
+      "y": 980,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n04_06",
+      "type": "file",
+      "file": "04-tpv-hosteleria/04-06-carta-menu.md",
+      "x": -700,
+      "y": 1035,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "g05",
+      "type": "group",
+      "label": "05 — TPV Comercio 🛍",
+      "x": 400,
+      "y": 340,
+      "width": 360,
+      "height": 320,
+      "color": "5"
+    },
+    {
+      "id": "n05_01",
+      "type": "file",
+      "file": "05-tpv-comercio/05-01-vision-general.md",
+      "x": 420,
+      "y": 370,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n05_02",
+      "type": "file",
+      "file": "05-tpv-comercio/05-02-pantalla-venta.md",
+      "x": 420,
+      "y": 425,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n05_03",
+      "type": "file",
+      "file": "05-tpv-comercio/05-03-lector-codigo-barras.md",
+      "x": 420,
+      "y": 480,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n05_04",
+      "type": "file",
+      "file": "05-tpv-comercio/05-04-gestion-stock.md",
+      "x": 420,
+      "y": 535,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n05_05",
+      "type": "file",
+      "file": "05-tpv-comercio/05-05-devoluciones.md",
+      "x": 420,
+      "y": 590,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n05_06",
+      "type": "file",
+      "file": "05-tpv-comercio/05-06-cobro-comercio.md",
+      "x": 420,
+      "y": 645,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "g07",
+      "type": "group",
+      "label": "07 — Instalador",
+      "x": 400,
+      "y": 730,
+      "width": 360,
+      "height": 175,
+      "color": "6"
+    },
+    {
+      "id": "n07_01",
+      "type": "file",
+      "file": "07-instalador/07-01-jpackage.md",
+      "x": 420,
+      "y": 760,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n07_02",
+      "type": "file",
+      "file": "07-instalador/07-02-firma-ejecutable.md",
+      "x": 420,
+      "y": 815,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n07_03",
+      "type": "file",
+      "file": "07-instalador/07-03-proceso-build.md",
+      "x": 420,
+      "y": 870,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "g08",
+      "type": "group",
+      "label": "08 — Web 🌐",
+      "x": -180,
+      "y": 530,
+      "width": 360,
+      "height": 320,
+      "color": "2"
+    },
+    {
+      "id": "n08_01",
+      "type": "file",
+      "file": "08-web/08-01-estructura-web.md",
+      "x": -160,
+      "y": 560,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n08_02",
+      "type": "file",
+      "file": "08-web/08-02-landing-page.md",
+      "x": -160,
+      "y": 615,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n08_03",
+      "type": "file",
+      "file": "08-web/08-03-pagina-hosteleria.md",
+      "x": -160,
+      "y": 670,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n08_04",
+      "type": "file",
+      "file": "08-web/08-04-pagina-comercio.md",
+      "x": -160,
+      "y": 725,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n08_05",
+      "type": "file",
+      "file": "08-web/08-05-pagina-precios.md",
+      "x": -160,
+      "y": 780,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n08_06",
+      "type": "file",
+      "file": "08-web/08-06-pagina-descarga.md",
+      "x": -160,
+      "y": 835,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "g09",
+      "type": "group",
+      "label": "09 — SEO 📈",
+      "x": 400,
+      "y": 960,
+      "width": 360,
+      "height": 240,
+      "color": "4"
+    },
+    {
+      "id": "n09_01",
+      "type": "file",
+      "file": "09-seo/09-01-estrategia-seo.md",
+      "x": 420,
+      "y": 990,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n09_02",
+      "type": "file",
+      "file": "09-seo/09-02-palabras-clave.md",
+      "x": 420,
+      "y": 1045,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n09_03",
+      "type": "file",
+      "file": "09-seo/09-03-blog-articulos.md",
+      "x": 420,
+      "y": 1100,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n09_04",
+      "type": "file",
+      "file": "09-seo/09-04-seo-tecnico.md",
+      "x": 420,
+      "y": 1155,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "g11",
+      "type": "group",
+      "label": "11 — Fases 🗺",
+      "x": 850,
+      "y": -280,
+      "width": 360,
+      "height": 560,
+      "color": "1"
+    },
+    {
+      "id": "n11_01",
+      "type": "file",
+      "file": "11-fases/11-01-roadmap.md",
+      "x": 870,
+      "y": -250,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n11_02",
+      "type": "file",
+      "file": "11-fases/11-02-fase1-nucleo.md",
+      "x": 870,
+      "y": -195,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n11_03",
+      "type": "file",
+      "file": "11-fases/11-03-fase2-verifactu.md",
+      "x": 870,
+      "y": -140,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n11_04",
+      "type": "file",
+      "file": "11-fases/11-04-fase3-comercio.md",
+      "x": 870,
+      "y": -85,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n11_05",
+      "type": "file",
+      "file": "11-fases/11-05-fase4-hosteleria.md",
+      "x": 870,
+      "y": -30,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n11_06",
+      "type": "file",
+      "file": "11-fases/11-06-fase5-instalador.md",
+      "x": 870,
+      "y": 25,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n11_07",
+      "type": "file",
+      "file": "11-fases/11-07-fase6-web.md",
+      "x": 870,
+      "y": 80,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n11_08",
+      "type": "file",
+      "file": "11-fases/11-08-fase7-beta.md",
+      "x": 870,
+      "y": 135,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "n11_09",
+      "type": "file",
+      "file": "11-fases/11-09-fase8-lanzamiento.md",
+      "x": 870,
+      "y": 190,
+      "width": 320,
+      "height": 45
+    },
+    {
+      "id": "nota_inicio",
+      "type": "text",
+      "text": "## 🚀 EMPIEZA AQUÍ\nLee CLAUDE.md completo antes de cualquier cosa",
+      "x": 0,
+      "y": -100,
+      "width": 320,
+      "height": 80,
+      "color": "1"
+    },
+    {
+      "id": "nota_orden",
+      "type": "text",
+      "text": "**Orden recomendado:**\nF1 → F2 → F3 o F4 → F5 → F6\nWeb puede hacerse en paralelo",
+      "x": 850,
+      "y": 250,
+      "width": 320,
+      "height": 80,
+      "color": "5"
+    },
+    {
+      "id": "nota_decision",
+      "type": "text",
+      "text": "⚠️ **Decisiones pendientes**\nVer 00-02 antes de empezar Fase 6",
+      "x": -720,
+      "y": -330,
+      "width": 360,
+      "height": 45,
+      "color": "4"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_c_meta",
+      "fromNode": "claude",
+      "toNode": "g00",
+      "label": "leer antes"
+    },
+    {
+      "id": "e_c_arq",
+      "fromNode": "claude",
+      "toNode": "g01",
+      "label": "leer antes"
+    },
+    {
+      "id": "e_c_fases",
+      "fromNode": "claude",
+      "toNode": "g11",
+      "label": "hoja de ruta"
+    },
+    {
+      "id": "e_arq_bd",
+      "fromNode": "g01",
+      "toNode": "g10",
+      "label": "define esquema"
+    },
+    {
+      "id": "e_bd_core",
+      "fromNode": "g10",
+      "toNode": "g03",
+      "label": "base para"
+    },
+    {
+      "id": "e_lic_core",
+      "fromNode": "g06",
+      "toNode": "g03",
+      "label": "integra en"
+    },
+    {
+      "id": "e_core_veri",
+      "fromNode": "g03",
+      "toNode": "g02",
+      "label": "usa"
+    },
+    {
+      "id": "e_veri_host",
+      "fromNode": "g02",
+      "toNode": "g04",
+      "label": "necesario para"
+    },
+    {
+      "id": "e_veri_com",
+      "fromNode": "g02",
+      "toNode": "g05",
+      "label": "necesario para"
+    },
+    {
+      "id": "e_core_host",
+      "fromNode": "g03",
+      "toNode": "g04",
+      "label": "base"
+    },
+    {
+      "id": "e_core_com",
+      "fromNode": "g03",
+      "toNode": "g05",
+      "label": "base"
+    },
+    {
+      "id": "e_host_inst",
+      "fromNode": "g04",
+      "toNode": "g07",
+      "label": "compilar después"
+    },
+    {
+      "id": "e_com_inst",
+      "fromNode": "g05",
+      "toNode": "g07",
+      "label": "compilar después"
+    },
+    {
+      "id": "e_web_seo",
+      "fromNode": "g08",
+      "toNode": "g09",
+      "label": "junto con"
+    },
+    {
+      "id": "e_inst_web",
+      "fromNode": "g07",
+      "toNode": "g08",
+      "label": "necesario antes (instalador)"
+    },
+    {
+      "id": "e_nota_claude",
+      "fromNode": "nota_inicio",
+      "toNode": "claude"
+    }
+  ]
+}

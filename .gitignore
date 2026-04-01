@@ -1,0 +1,76 @@
+# ─── Claves y certificados (NUNCA subir) ──────────────
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.crt
+*.cer
+secrets/
+certs/
+
+# ─── Base de datos SQLite (datos reales de negocio) ───
+*.db
+*.sqlite
+*.sqlite3
+
+# ─── Maven / Java ─────────────────────────────────────
+target/
+*.class
+*.jar
+!**/test*.jar
+dependency-reduced-pom.xml
+release.properties
+
+# ─── Logs ─────────────────────────────────────────────
+*.log
+logs/
+*.log.*
+
+# ─── macOS ────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+
+# ─── Windows ──────────────────────────────────────────
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ─── IDEs ─────────────────────────────────────────────
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ─── Claude Code (datos de sesión locales) ────────────
+.claude/
+
+# ─── GitHub java-upgrade bot (auto-generado) ──────────
+.github/java-upgrade/
+
+# ─── Instaladores generados ───────────────────────────
+dist/
+installer/
+*.exe
+*.msi
+*.dmg
+*.pkg
+*.deb
+*.rpm
+*.AppImage
+
+# ─── Archivos de configuración con datos personales ───
+config-local.properties
+*.local.properties

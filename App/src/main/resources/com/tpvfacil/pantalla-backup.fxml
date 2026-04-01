@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tpvfacil.core.ui.BackupController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label text="Copias de Seguridad" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="Exportar ahora" onAction="#exportarManual" />
+        <Button text="Restaurar desde archivo" onAction="#restaurarDesdeArchivo" style="-fx-base: #E74C3C; -fx-text-fill: white;" />
+    </HBox>
+
+    <Label text="Backups Automáticos Disponibles (Últimos 7 días)" style="-fx-font-weight: bold; -fx-padding: 10 0 0 0;" />
+    <TableView fx:id="tablaBackups" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colNombre" text="Archivo" prefWidth="250" />
+            <TableColumn fx:id="colSize" text="Tamaño" prefWidth="100" />
+            <TableColumn fx:id="colAcciones" text="" prefWidth="150" />
+        </columns>
+    </TableView>
+
+</VBox>

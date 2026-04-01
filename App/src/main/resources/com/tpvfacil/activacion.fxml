@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.tpvfacil.licencia.ActivacionController"
+      spacing="20"
+      alignment="TOP_CENTER"
+      style="-fx-background-color: white; -fx-padding: 30;">
+
+    <!-- Título -->
+    <Label text="Activar TPVFácil"
+           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1B4F8A;"/>
+
+    <Separator/>
+
+    <!-- ID del equipo -->
+    <VBox spacing="8" alignment="CENTER">
+        <Label text="ID de tu equipo:" style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+        <HBox spacing="10" alignment="CENTER">
+            <Label fx:id="labelFingerprint"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: monospace;
+                          -fx-background-color: #f5f5f5; -fx-padding: 8 16; -fx-border-color: #ddd;
+                          -fx-border-radius: 4; -fx-background-radius: 4;"/>
+            <Button text="📋 Copiar" onAction="#copiarFingerprint"
+                    style="-fx-background-color: #1B4F8A; -fx-text-fill: white;
+                           -fx-background-radius: 4; -fx-cursor: hand;"/>
+        </HBox>
+        <Label text="Proporciona este código al comprar en tpvfacil.es/precios"
+               style="-fx-font-size: 12px; -fx-text-fill: #888; -fx-font-style: italic;"/>
+    </VBox>
+
+    <Separator/>
+
+    <!-- Campo de clave -->
+    <VBox spacing="8" alignment="CENTER">
+        <Label text="Clave de licencia:" style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+        <TextField fx:id="campoClave"
+                   promptText="TPVF-XXXX-XXXX-XXXX-XXXX"
+                   maxWidth="280"
+                   style="-fx-font-size: 16px; -fx-font-family: monospace; -fx-padding: 8;
+                          -fx-border-color: #ddd; -fx-border-radius: 4; -fx-background-radius: 4;
+                          -fx-alignment: CENTER;"/>
+    </VBox>
+
+    <!-- Resultado -->
+    <Label fx:id="labelResultado" text="" style="-fx-font-size: 13px;" wrapText="true"
+           maxWidth="350" alignment="CENTER"/>
+
+    <!-- Botones -->
+    <HBox spacing="12" alignment="CENTER">
+        <Button fx:id="btnActivar" text="Activar" onAction="#activar"
+                prefWidth="130" prefHeight="40"
+                style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-size: 14px;
+                       -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
+        <Button text="Ir a comprar →" onAction="#irAComprar"
+                prefWidth="130" prefHeight="40"
+                style="-fx-background-color: #E67E22; -fx-text-fill: white; -fx-font-size: 14px;
+                       -fx-background-radius: 6; -fx-cursor: hand;"/>
+        <Button text="Cancelar" onAction="#cerrar"
+                prefWidth="90" prefHeight="40"
+                style="-fx-background-color: #95a5a6; -fx-text-fill: white;
+                       -fx-background-radius: 6; -fx-cursor: hand;"/>
+    </HBox>
+
+    <VBox.margin>
+        <Insets top="10"/>
+    </VBox.margin>
+</VBox>

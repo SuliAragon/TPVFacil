@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+
+<BorderPane style="-fx-background-color: #F4F6F9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tpvfacil.hosteleria.controller.MesasController">
+    <top>
+        <MenuBar>
+            <Menu text="Archivo">
+                <MenuItem text="Volver al Menú Principal" onAction="#volverInicio" />
+                <MenuItem text="Salir" onAction="#salir" />
+            </Menu>
+            <Menu text="Gestión">
+                <MenuItem text="Carta y Productos" onAction="#abrirGestionCarta" />
+            </Menu>
+            <Menu text="Caja">
+                <MenuItem text="Cierre de Caja" onAction="#abrirCierreCaja" />
+            </Menu>
+        </MenuBar>
+    </top>
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+
+            <!-- Cabecera -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="🍽 Mesas" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button text="+ Añadir Mesa" onAction="#abrirNuevaMesa" style="-fx-font-size: 14px; -fx-base: #3498DB; -fx-text-fill: white; -fx-padding: 8 16;">
+                    <cursor><Cursor fx:constant="HAND" /></cursor>
+                </Button>
+            </HBox>
+
+            <!-- Grid de mesas -->
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+                <FlowPane fx:id="mesasPane" hgap="15" vgap="15" style="-fx-padding: 10;" />
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tpvfacil.hosteleria.controller.DialogoMesaController" style="-fx-background-color: #F4F6F9;">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label text="Mesa" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <VBox spacing="5">
+        <Label text="Nombre *" />
+        <TextField fx:id="txtNombre" promptText="Ej: Mesa 1, Barra 2, Terraza A..." />
+    </VBox>
+
+    <HBox spacing="20">
+        <VBox spacing="5">
+            <Label text="Capacidad" />
+            <Spinner fx:id="spnCapacidad" prefWidth="100" />
+        </VBox>
+        <VBox spacing="5">
+            <Label text="Zona" />
+            <ComboBox fx:id="cmbZona" prefWidth="150" />
+        </VBox>
+    </HBox>
+
+    <Region VBox.vgrow="ALWAYS" />
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancelar" onAction="#cancelar" style="-fx-font-size: 13px;" />
+        <Button text="Guardar" onAction="#guardar" style="-fx-font-size: 13px; -fx-base: #27AE60; -fx-text-fill: white;" />
+    </HBox>
+</VBox>

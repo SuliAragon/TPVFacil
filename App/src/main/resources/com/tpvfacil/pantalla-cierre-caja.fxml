@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="15" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tpvfacil.core.ui.CierreCajaController" style="-fx-background-color: #F4F6F9; -fx-pref-width: 600; -fx-pref-height: 550;">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label text="Cierre de Caja Diario" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+    
+    <HBox spacing="10">
+        <VBox spacing="10" HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #ccc; -fx-border-radius: 5px;">
+            <Label text="Ventas por Forma de Pago" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Tickets emitidos (Hoy):" prefWidth="150" />
+                <Label fx:id="lblNumTickets" text="0" style="-fx-font-weight: bold;" />
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Efectivo en caja (Teórico):" prefWidth="150" />
+                <Label fx:id="lblEfectivoTeorico" text="0.00 €" style="-fx-font-weight: bold;" />
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Tarjeta:" prefWidth="150" />
+                <Label fx:id="lblTotalTarjeta" text="0.00 €" style="-fx-font-weight: bold;" />
+            </HBox>
+            <Separator />
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="TOTAL VENTAS DIARIAS:" prefWidth="150" style="-fx-font-weight: bold;" />
+                <Label fx:id="lblTotalGeneral" text="0.00 €" style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #1B4F8A;" />
+            </HBox>
+        </VBox>
+        
+        <VBox spacing="10" HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #ccc; -fx-border-radius: 5px;">
+            <Label text="Desglose IVA" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+            
+            <TableView fx:id="tablaDesgloseIva" VBox.vgrow="ALWAYS" prefHeight="120">
+                <columns>
+                    <TableColumn fx:id="colIvaPorcentaje" text="IVA %" prefWidth="60" />
+                    <TableColumn fx:id="colIvaBase" text="Base Imp." prefWidth="90" />
+                    <TableColumn fx:id="colIvaCuota" text="Cuota" prefWidth="80" />
+                </columns>
+            </TableView>
+        </VBox>
+    </HBox>
+    
+    <VBox spacing="10" style="-fx-background-color: #FFF9C4; -fx-padding: 15; -fx-border-color: #F1C40F; -fx-border-radius: 5px;">
+        <Label text="Arqueo de Caja" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+        
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Label text="Efectivo REAL introducido en caja:" style="-fx-font-size: 16px;" />
+            <TextField fx:id="txtEfectivoReal" promptText="0.00" style="-fx-font-size: 18px; -fx-pref-width: 120;" />
+            <Label text="€" style="-fx-font-size: 18px;" />
+        </HBox>
+        
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Label text="Descuadre:" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+            <Label fx:id="lblDescuadre" text="0.00 €" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: gray;" />
+            <Label fx:id="lblEstadoArqueo" text="(Falta efectivo)" visible="false" />
+        </HBox>
+    </VBox>
+    
+    <Label text="* Al confirmar el cierre se genera automáticamente un backup local." style="-fx-font-size: 11px; -fx-text-fill: gray;" />
+    
+    <HBox spacing="10" alignment="CENTER_RIGHT" VBox.vgrow="SOMETIMES">
+        <Button text="Cancelar" onAction="#cancelar" style="-fx-font-size: 16px; -fx-padding: 10px 15px;" />
+        <Button text="Cerrar SIN imprimir" onAction="#cerrarSinImprimir" style="-fx-font-size: 16px; -fx-padding: 10px 15px;" />
+        <Button text="Cerrar E Imprimir" onAction="#cerrarEImprimir" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-background-color: #27AE60; -fx-text-fill: white; -fx-padding: 10px 15px;" />
+    </HBox>
+</VBox>
