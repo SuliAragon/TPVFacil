@@ -14,7 +14,7 @@ Relacionado: [[CLAUDE.md]] | [[11-fases/11-01-roadmap]]
 | [[11-fases/11-03-fase2-verifactu\|Fase 2 — Verifactu]] | ✅ Completada | 2026-04-01 |
 | [[11-fases/11-04-fase3-comercio\|Fase 3 — Comercio]] | ✅ Completada | 2026-04-01 |
 | [[11-fases/11-05-fase4-hosteleria\|Fase 4 — Hostelería]] | ✅ Completada | 2026-04-01 |
-| [[11-fases/11-06-fase5-instalador\|Fase 5 — Instalador]] | ⬜ Pendiente | — |
+| [[11-fases/11-06-fase5-instalador\|Fase 5 — Instalador]] | ✅ Completada | 2026-04-01 |
 | [[11-fases/11-07-fase6-web\|Fase 6 — Web]] | ⬜ Pendiente | — |
 | [[11-fases/11-08-fase7-beta\|Fase 7 — Beta]] | ⬜ Pendiente | — |
 | [[11-fases/11-09-fase8-lanzamiento\|Fase 8 — Lanzamiento]] | ⬜ Pendiente | — |
@@ -170,11 +170,38 @@ mvn clean compile → 62 ficheros compilados. BUILD SUCCESS.
 
 ---
 
-## ⬜ Fases 5-8 — Resumen
+---
+
+## ✅ Fase 5 — Instalador (Completada)
+
+### Ficheros creados
+- `.github/workflows/release.yml` — 3 jobs paralelos en GitHub Actions:
+  - `build-windows` (windows-latest) → `.exe` con JRE 21 embebido
+  - `build-macos` (macos-latest) → `.dmg` con JRE 21 embebido
+  - `build-linux` (ubuntu-latest) → `.deb` con JRE 21 embebido
+  - `create-release` — crea GitHub Release con los 3 instaladores
+- `App/build.sh` — script local para macOS y Linux
+- `App/build.bat` — script local para Windows
+
+### Cómo generar los instaladores
+```bash
+git tag v1.0.0
+git push --tags
+# GitHub Actions genera los 3 instaladores automáticamente en ~5 min
+```
+
+### Verificación ✅
+```
+mvn clean compile → BUILD SUCCESS (Java 21 target)
+Workflow configurado y subido al repo.
+```
+
+---
+
+## ⬜ Fases 6-8 — Resumen
 
 | Fase | Contenido principal |
 |------|---------------------|
-| **Fase 5 — Instalador** | jpackage → .exe Windows, GitHub Actions CI/CD |
 | **Fase 6 — Web** | Landing page, módulos, precios, descarga, blog |
 | **Fase 7 — Beta** | Pruebas con 2 negocios reales, bug fixes |
 | **Fase 8 — Lanzamiento** | Primera venta, campaña marketing |
