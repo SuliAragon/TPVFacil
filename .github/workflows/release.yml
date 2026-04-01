@@ -1,0 +1,206 @@
+# ─────────────────────────────────────────────────────────────────
+# TPVFácil — Build & Release
+#
+# Trigger: push de tag  v*  (ej. git tag v1.0.0 && git push --tags)
+#
+# Genera en paralelo:
+#   · TPVFacil-Setup-<version>.exe  (Windows 10/11)
+#   · TPVFacil-<version>.dmg        (macOS 13+)
+#   · tpvfacil_<version>_amd64.deb  (Ubuntu/Debian)
+#
+# Todos incluyen JRE 21 embebido — el usuario NO necesita Java.
+# ─────────────────────────────────────────────────────────────────
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+
+  # ══════════════════════════════════════════
+  #  WINDOWS  →  .exe
+  # ══════════════════════════════════════════
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Build fat JAR
+        working-directory: App
+        run: mvn clean package -q
+
+      - name: Create Windows installer (.exe)
+        working-directory: App
+        shell: pwsh
+        run: |
+          $version = "${{ github.ref_name }}".TrimStart('v')
+          New-Item -ItemType Directory -Force -Path dist | Out-Null
+          jpackage `
+            --name "TPVFacil" `
+            --app-version $version `
+            --description "TPV para negocios españoles con Verifactu (AEAT)" `
+            --vendor "TPVFácil" `
+            --input target `
+            --main-jar tpvfacil-1.0.0-shaded.jar `
+            --main-class com.tpvfacil.Main `
+            --type exe `
+            --win-menu `
+            --win-menu-group "TPVFácil" `
+            --win-shortcut `
+            --win-dir-chooser `
+            --win-upgrade-uuid "8B3E2F1A-4C5D-4E6F-9A0B-1C2D3E4F5A6B" `
+            --java-options "--add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED" `
+            --dest dist
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-installer
+          path: App/dist/*.exe
+          retention-days: 7
+
+  # ══════════════════════════════════════════
+  #  macOS  →  .dmg
+  # ══════════════════════════════════════════
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Build fat JAR
+        working-directory: App
+        run: mvn clean package -q
+
+      - name: Create macOS installer (.dmg)
+        working-directory: App
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          mkdir -p dist
+          jpackage \
+            --name "TPVFacil" \
+            --app-version "$VERSION" \
+            --description "TPV para negocios españoles con Verifactu (AEAT)" \
+            --vendor "TPVFácil" \
+            --input target \
+            --main-jar tpvfacil-1.0.0-shaded.jar \
+            --main-class com.tpvfacil.Main \
+            --type dmg \
+            --mac-package-name "TPVFácil" \
+            --java-options "--add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED" \
+            --dest dist
+
+      - name: Upload macOS artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-installer
+          path: App/dist/*.dmg
+          retention-days: 7
+
+  # ══════════════════════════════════════════
+  #  LINUX  →  .deb
+  # ══════════════════════════════════════════
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Install jpackage dependencies
+        run: sudo apt-get install -y fakeroot binutils
+
+      - name: Build fat JAR
+        working-directory: App
+        run: mvn clean package -q
+
+      - name: Create Linux installer (.deb)
+        working-directory: App
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          mkdir -p dist
+          jpackage \
+            --name "tpvfacil" \
+            --app-version "$VERSION" \
+            --description "TPV para negocios espanoles con Verifactu (AEAT)" \
+            --vendor "TPVFacil" \
+            --input target \
+            --main-jar tpvfacil-1.0.0-shaded.jar \
+            --main-class com.tpvfacil.Main \
+            --type deb \
+            --linux-menu-group "Office" \
+            --linux-shortcut \
+            --java-options "--add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED" \
+            --dest dist
+
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-installer
+          path: App/dist/*.deb
+          retention-days: 7
+
+  # ══════════════════════════════════════════
+  #  RELEASE  →  GitHub Release con los 3
+  # ══════════════════════════════════════════
+  create-release:
+    needs: [build-windows, build-macos, build-linux]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download all installers
+        uses: actions/download-artifact@v4
+        with:
+          path: installers
+          merge-multiple: true
+
+      - name: List installers
+        run: ls -lh installers/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "TPVFácil ${{ github.ref_name }}"
+          body: |
+            ## TPVFácil ${{ github.ref_name }}
+
+            ### Descarga tu instalador:
+
+            | Sistema | Archivo | Notas |
+            |---------|---------|-------|
+            | 🪟 Windows 10/11 | `TPVFacil-Setup-*.exe` | Incluye Java — no necesitas instalarlo |
+            | 🍎 macOS 13+     | `TPVFacil-*.dmg`       | Incluye Java — no necesitas instalarlo |
+            | 🐧 Linux (Ubuntu/Debian) | `tpvfacil_*_amd64.deb` | Incluye Java — no necesitas instalarlo |
+
+            ### Instalación:
+            - **Windows:** ejecuta el `.exe` → si aparece SmartScreen, clic en "Más información" → "Ejecutar igualmente"
+            - **macOS:** abre el `.dmg`, arrastra TPVFácil a Aplicaciones
+            - **Linux:** `sudo dpkg -i tpvfacil_*.deb`
+
+            ### Primera vez:
+            El asistente de configuración te guiará para introducir los datos de tu negocio.
+          files: installers/**
+          generate_release_notes: false
+          draft: false
+          prerelease: false
