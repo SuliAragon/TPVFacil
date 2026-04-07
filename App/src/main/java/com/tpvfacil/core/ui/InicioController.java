@@ -6,7 +6,6 @@ import com.tpvfacil.licencia.ModoDemo;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
@@ -22,8 +21,6 @@ public class InicioController {
 
     @FXML private HBox bannerDemo;
     @FXML private Label labelTicketsDemo;
-    @FXML private Button btnHosteleria;
-    @FXML private Button btnComercio;
 
     @FXML
     public void initialize() {

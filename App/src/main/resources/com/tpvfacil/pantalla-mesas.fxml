@@ -3,41 +3,62 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 
-<BorderPane style="-fx-background-color: #F4F6F9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tpvfacil.hosteleria.controller.MesasController">
+<BorderPane style="-fx-background-color: #F1F5F9;"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.tpvfacil.hosteleria.controller.MesasController">
+
+    <!-- ── CABECERA OSCURA ──────────────────────────────────────── -->
     <top>
-        <MenuBar>
-            <Menu text="Archivo">
-                <MenuItem text="Volver al Menú Principal" onAction="#volverInicio" />
-                <MenuItem text="Salir" onAction="#salir" />
-            </Menu>
-            <Menu text="Gestión">
-                <MenuItem text="Carta y Productos" onAction="#abrirGestionCarta" />
-            </Menu>
-            <Menu text="Caja">
-                <MenuItem text="Cierre de Caja" onAction="#abrirCierreCaja" />
-            </Menu>
-        </MenuBar>
-    </top>
-    <center>
-        <VBox spacing="10">
-            <padding>
-                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-            </padding>
-
-            <!-- Cabecera -->
-            <HBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="🍽 Mesas" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+        <VBox>
+            <HBox styleClass="header-app" alignment="CENTER_LEFT" spacing="16">
+                <Label text="🧾 TPVFácil" styleClass="header-logo" />
+                <Label text="Hostelería"  styleClass="header-modulo" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Button text="+ Añadir Mesa" onAction="#abrirNuevaMesa" style="-fx-font-size: 14px; -fx-base: #3498DB; -fx-text-fill: white; -fx-padding: 8 16;">
-                    <cursor><Cursor fx:constant="HAND" /></cursor>
-                </Button>
+                <Button text="📋 Carta"    onAction="#abrirGestionCarta"  styleClass="header-btn" />
+                <Button text="🔒 Caja"     onAction="#abrirCierreCaja"    styleClass="header-btn" />
+                <Button text="+ Mesa"      onAction="#abrirNuevaMesa"
+                        style="-fx-background-color: #16A34A; -fx-text-fill: white;
+                               -fx-font-weight: bold; -fx-font-size: 12px;
+                               -fx-background-radius: 6; -fx-border-radius: 6;
+                               -fx-padding: 5 14; -fx-cursor: hand;" />
+                <Button text="⬅ Inicio"   onAction="#volverInicio"       styleClass="header-btn-volver" />
+            </HBox>
+
+            <MenuBar styleClass="menu-bar" style="-fx-padding: 1 8;">
+                <Menu text="Más opciones">
+                    <MenuItem text="Salir de la aplicación" onAction="#salir" />
+                </Menu>
+            </MenuBar>
+        </VBox>
+    </top>
+
+    <!-- ── CONTENIDO ──────────────────────────────────────────────── -->
+    <center>
+        <VBox spacing="0">
+            <padding><Insets bottom="16" left="16" right="16" top="16" /></padding>
+
+            <!-- Leyenda de estados -->
+            <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-padding: 0 0 14 2;">
+                <HBox spacing="6" alignment="CENTER">
+                    <Label text="●" style="-fx-text-fill: #16A34A; -fx-font-size: 14px;" />
+                    <Label text="Libre" style="-fx-text-fill: #64748B; -fx-font-size: 12px;" />
+                </HBox>
+                <HBox spacing="6" alignment="CENTER">
+                    <Label text="●" style="-fx-text-fill: #DC2626; -fx-font-size: 14px;" />
+                    <Label text="Ocupada" style="-fx-text-fill: #64748B; -fx-font-size: 12px;" />
+                </HBox>
+                <HBox spacing="6" alignment="CENTER">
+                    <Label text="●" style="-fx-text-fill: #D97706; -fx-font-size: 14px;" />
+                    <Label text="Pendiente de cobro" style="-fx-text-fill: #64748B; -fx-font-size: 12px;" />
+                </HBox>
             </HBox>
 
             <!-- Grid de mesas -->
-            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
-                <FlowPane fx:id="mesasPane" hgap="15" vgap="15" style="-fx-padding: 10;" />
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                <FlowPane fx:id="mesasPane" hgap="16" vgap="16"
+                          style="-fx-padding: 4;" />
             </ScrollPane>
         </VBox>
     </center>

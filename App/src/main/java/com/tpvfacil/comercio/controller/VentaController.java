@@ -230,8 +230,7 @@ public class VentaController {
 
     private ToggleButton crearBotonCategoria(String texto) {
         ToggleButton btn = new ToggleButton(texto);
-        btn.setStyle("-fx-font-size: 13px; -fx-padding: 6 14;");
-        btn.setCursor(Cursor.HAND);
+        btn.getStyleClass().add("toggle-categoria");
         return btn;
     }
 
@@ -280,34 +279,34 @@ public class VentaController {
 
     /** Crea una tarjeta visual para un producto del catálogo. */
     private VBox crearTarjetaProducto(Producto p) {
-        VBox box = new VBox(5);
-        box.setPadding(new Insets(10));
-        box.setStyle("-fx-background-color: white; -fx-background-radius: 8; " +
-                "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);");
-        box.setPrefSize(130, 100);
+        VBox box = new VBox(6);
+        box.setPadding(new Insets(14));
+        box.getStyleClass().add("tarjeta-producto");
+        box.setPrefSize(150, 110);
         box.setAlignment(Pos.CENTER);
 
+        // Nombre
         Label lblNombre = new Label(p.getNombre());
         lblNombre.setWrapText(true);
-        lblNombre.setStyle("-fx-font-weight: bold; -fx-font-size: 12px;");
+        lblNombre.setStyle("-fx-font-weight: bold; -fx-font-size: 13px; -fx-text-fill: #0F172A; -fx-text-alignment: center;");
+        lblNombre.setMaxWidth(130);
 
+        // Precio — color azul de marca
         Label lblPrecio = new Label(String.format("%.2f €", p.getPrecioConIva()));
-        lblPrecio.setStyle("-fx-text-fill: #1B4F8A; -fx-font-size: 14px; -fx-font-weight: bold;");
+        lblPrecio.setStyle("-fx-text-fill: #1D4ED8; -fx-font-size: 15px; -fx-font-weight: bold;");
 
-        // Indicador stock
-        if (p.tieneControlStock() && p.getStock() == 0) {
+        boolean agotado = p.tieneControlStock() && p.getStock() == 0;
+        if (agotado) {
             Label lblAgotado = new Label("AGOTADO");
-            lblAgotado.setStyle("-fx-text-fill: red; -fx-font-size: 10px; -fx-font-weight: bold;");
+            lblAgotado.getStyleClass().add("stock-agotado");
             box.getChildren().addAll(lblNombre, lblPrecio, lblAgotado);
-            box.setStyle(box.getStyle() + "-fx-opacity: 0.5;");
+            box.setOpacity(0.45);
         } else {
             box.getChildren().addAll(lblNombre, lblPrecio);
         }
 
         box.setOnMouseClicked(event -> {
-            if (p.tieneControlStock() && p.getStock() == 0) {
-                return; // No añadir productos agotados
-            }
+            if (p.tieneControlStock() && p.getStock() == 0) return;
             agregarProducto(p);
         });
         box.setCursor(Cursor.HAND);

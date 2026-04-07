@@ -2,7 +2,7 @@
 
 #meta #progreso
 Relacionado: [[CLAUDE.md]] | [[11-fases/11-01-roadmap]]
-Última actualización: 2026-04-01
+Última actualización: 2026-04-07
 
 ---
 
@@ -178,8 +178,8 @@ mvn clean compile → 62 ficheros compilados. BUILD SUCCESS.
 - `.github/workflows/release.yml` — 3 jobs paralelos en GitHub Actions:
   - `build-windows` (windows-latest) → `.exe` con JRE 21 embebido
   - `build-macos` (macos-latest) → `.dmg` con JRE 21 embebido
-  - `build-linux` (ubuntu-latest) → `.deb` con JRE 21 embebido
-  - `create-release` — crea GitHub Release con los 3 instaladores
+  - `build-linux` (ubuntu-latest) → `.deb` y `.rpm` con JRE 21 embebido
+  - `create-release` — crea GitHub Release con los 4 instaladores
 - `App/build.sh` — script local para macOS y Linux
 - `App/build.bat` — script local para Windows
 
@@ -187,7 +187,7 @@ mvn clean compile → 62 ficheros compilados. BUILD SUCCESS.
 ```bash
 git tag v1.0.0
 git push --tags
-# GitHub Actions genera los 3 instaladores automáticamente en ~5 min
+# GitHub Actions genera los 4 instaladores automáticamente en ~5 min
 ```
 
 ### Verificación ✅
@@ -206,7 +206,7 @@ Workflow configurado y subido al repo.
 - `Web/index.html` — Landing page principal (Schema: SoftwareApplication + FAQPage)
 - `Web/hosteleria/index.html` — Página de hostelería (Schema: SoftwareApplication audience bares/restaurantes)
 - `Web/comercio/index.html` — Página de comercio (Schema: SoftwareApplication audience comercio)
-- `Web/precios/index.html` — Precios (Schema: Offer 79€ + FAQPage)
+- `Web/precios/index.html` — Precios (Schema: Offer 150€ + FAQPage)
 - `Web/descargar/index.html` — Descarga por SO: .exe/.dmg/.deb vía GitHub Releases
 - `Web/verifactu/index.html` — Página informativa Verifactu (Schema: Article)
 - `Web/blog/index.html` — Índice del blog
@@ -223,6 +223,28 @@ Todas las páginas con SEO on-page: title, meta description, canonical, robots, 
 Mobile-first. Inter font. Sin dependencias de frameworks.
 Sitemap y robots.txt listos para Google Search Console.
 ```
+
+---
+
+## 🎨 Mejoras de diseño (fuera de fases principales)
+
+### App — Redesign UI v2 (2026-04-07)
+- `estilos.css` reescrito con design system Stripe/Coinbase (píldoras, sombras azuladas, jerarquía tipográfica)
+- Header oscuro `#0F172A` en todas las pantallas principales (reemplaza MenuBar blanco genérico)
+- `pantalla-venta.fxml`: header unificado con accesos rápidos, catálogo y cesta rediseñados
+- `pantalla-mesas.fxml`: header consistente, leyenda de estados, cards mejoradas
+- `pantalla-cobro-comercio.fxml`: panel de pago limpio, toggle de pago en píldora
+- `inicio.fxml`: fondo degradado oscuro, tarjetas glassmorphism para módulos
+- `VentaController`: tarjetas de producto usan clase CSS (no inline), botones de categoría usan `.toggle-categoria`
+- `InicioController`: refactorizado para VBox en módulos (cards táctiles)
+
+### Web — Redesign v2 inspirado en awesome-design-md (2026-04-07)
+- `global.css` reescrito con filosofía Stripe/Coinbase: un solo color de acción, pills, sombras azuladas
+- Hero oscuro `#0A0F1E` con glow radial sutil — contraste alto vs. secciones blancas
+- Barra de stats (79€, 0€/mes, 3 OS, 100% local) bajo el hero
+- Botones en píldora `border-radius: 999px`, nav con blur backdrop
+- `index.html` reescrito con nueva estructura y clases del nuevo design system
+- Paleta simplificada: azul `#1D4ED8` como único color de acción, verde solo para Verifactu/éxito
 
 ---
 

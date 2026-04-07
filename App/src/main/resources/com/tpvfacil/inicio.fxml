@@ -3,61 +3,85 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.tpvfacil.core.ui.InicioController"
-            style="-fx-background-color: #1B4F8A;">
+            style="-fx-background-color: linear-gradient(to bottom right, #0F172A, #1E3A5F);">
 
-    <!-- CENTRO: Botones de módulo -->
+    <!-- CENTRO -->
     <center>
-        <VBox spacing="30" alignment="CENTER">
+        <VBox spacing="0" alignment="CENTER">
+
             <!-- Logo / Título -->
-            <VBox spacing="8" alignment="CENTER">
-                <Label text="TPVFácil"
-                       style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                <Label text="Sistema de Punto de Venta"
-                       style="-fx-font-size: 14px; -fx-text-fill: rgba(255,255,255,0.7);"/>
+            <VBox spacing="6" alignment="CENTER">
+                <padding><Insets bottom="48" /></padding>
+                <Label text="🧾 TPVFácil"
+                       style="-fx-font-size: 42px; -fx-font-weight: bold; -fx-text-fill: white;
+                              -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.4),8,0,0,2);"/>
+                <Label text="Sistema de Punto de Venta con Verifactu"
+                       style="-fx-font-size: 14px; -fx-text-fill: rgba(255,255,255,0.5);
+                              -fx-font-weight: normal;"/>
             </VBox>
 
-            <!-- Botones de módulo -->
-            <HBox spacing="30" alignment="CENTER">
-                <Button fx:id="btnHosteleria" text="🍽  Hostelería"
-                        onAction="#abrirHosteleria"
-                        prefWidth="200" prefHeight="120"
-                        style="-fx-background-color: white; -fx-text-fill: #1B4F8A;
-                               -fx-font-size: 18px; -fx-font-weight: bold;
-                               -fx-background-radius: 12; -fx-cursor: hand;
-                               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 2);"/>
+            <!-- Módulos -->
+            <HBox spacing="24" alignment="CENTER">
 
-                <Button fx:id="btnComercio" text="🛍  Comercio"
-                        onAction="#abrirComercio"
-                        prefWidth="200" prefHeight="120"
-                        style="-fx-background-color: white; -fx-text-fill: #1B4F8A;
-                               -fx-font-size: 18px; -fx-font-weight: bold;
-                               -fx-background-radius: 12; -fx-cursor: hand;
-                               -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 2);"/>
+                <!-- Hostelería -->
+                <VBox fx:id="btnHosteleria" onMouseClicked="#abrirHosteleria"
+                      styleClass="tarjeta-modulo"
+                      prefWidth="220" prefHeight="160"
+                      alignment="CENTER" spacing="12">
+                    <padding><Insets topRightBottomLeft="24"/></padding>
+                    <Label text="🍽"
+                           style="-fx-font-size: 44px;"/>
+                    <Label text="Hostelería"
+                           style="-fx-font-size: 19px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                    <Label text="Bares · Restaurantes"
+                           style="-fx-font-size: 12px; -fx-text-fill: rgba(255,255,255,0.5);"/>
+                </VBox>
+
+                <!-- Comercio -->
+                <VBox fx:id="btnComercio" onMouseClicked="#abrirComercio"
+                      styleClass="tarjeta-modulo"
+                      prefWidth="220" prefHeight="160"
+                      alignment="CENTER" spacing="12">
+                    <padding><Insets topRightBottomLeft="24"/></padding>
+                    <Label text="🛍"
+                           style="-fx-font-size: 44px;"/>
+                    <Label text="Comercio"
+                           style="-fx-font-size: 19px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                    <Label text="Tiendas · Pequeño negocio"
+                           style="-fx-font-size: 12px; -fx-text-fill: rgba(255,255,255,0.5);"/>
+                </VBox>
+
             </HBox>
 
-            <!-- Botón configuración -->
-            <Button text="⚙  Configuración" onAction="#abrirConfiguracion"
-                    style="-fx-background-color: transparent; -fx-text-fill: rgba(255,255,255,0.7);
-                           -fx-font-size: 13px; -fx-cursor: hand; -fx-border-color: transparent;
-                           -fx-underline: true;"/>
+            <!-- Configuración -->
+            <VBox alignment="CENTER" spacing="8">
+                <padding><Insets top="36" /></padding>
+                <Button text="⚙  Configuración" onAction="#abrirConfiguracion"
+                        style="-fx-background-color: transparent;
+                               -fx-text-fill: rgba(255,255,255,0.45);
+                               -fx-font-size: 12px; -fx-cursor: hand;
+                               -fx-border-color: transparent; -fx-padding: 6 12;"/>
+            </VBox>
+
         </VBox>
     </center>
 
     <!-- ABAJO: Banner DEMO -->
     <bottom>
-        <HBox fx:id="bannerDemo" spacing="12" alignment="CENTER"
-              style="-fx-background-color: #F39C12; -fx-padding: 8 16;">
+        <HBox fx:id="bannerDemo" spacing="14" alignment="CENTER"
+              styleClass="banner-demo">
             <Label fx:id="labelTicketsDemo"
-                   text="⚠ MODO DEMO — Tickets hoy: 0/20"
-                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: black;"/>
+                   text="⚠  MODO DEMO — Tickets hoy: 0/20"
+                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: white;"/>
             <Button text="Activar licencia →" onAction="#abrirActivacion"
-                    style="-fx-background-color: #1B4F8A; -fx-text-fill: white;
-                           -fx-font-size: 12px; -fx-background-radius: 4; -fx-cursor: hand;
-                           -fx-padding: 4 10;"/>
+                    style="-fx-background-color: rgba(0,0,0,0.25); -fx-text-fill: white;
+                           -fx-font-size: 12px; -fx-font-weight: bold;
+                           -fx-background-radius: 6; -fx-cursor: hand;
+                           -fx-border-color: rgba(255,255,255,0.3); -fx-border-width: 1;
+                           -fx-border-radius: 6; -fx-padding: 5 12;"/>
         </HBox>
     </bottom>
 </BorderPane>

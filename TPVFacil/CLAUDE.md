@@ -14,7 +14,7 @@ Un programa **descargable para Windows, macOS y Linux** que:
 2. Cumple con [[02-verifactu/02-01-que-es-verifactu|Verifactu (AEAT)]] desde el primer día
 3. Tiene **dos módulos**: [[04-tpv-hosteleria/04-01-vision-general|TPV Hostelería]] y [[05-tpv-comercio/05-01-vision-general|TPV Comercio]]
 4. Funciona en [[06-licencias/06-01-modo-demo|modo demo]] gratis y [[06-licencias/06-02-activacion-clave|modo completo]] con clave
-5. Se vende por **máximo 100 €** pago único — sin suscripciones
+5. Se vende por **150 €** pago único — sin suscripciones
 
 Además: una [[08-web/08-01-estructura-web|web corporativa]] para vender el software y posicionarse en Google ([[09-seo/09-01-estrategia-seo|estrategia SEO]]).
 
