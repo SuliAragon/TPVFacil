@@ -7,6 +7,7 @@
 #   · TPVFacil-Setup-<version>.exe  (Windows 10/11)
 #   · TPVFacil-<version>.dmg        (macOS 13+)
 #   · tpvfacil_<version>_amd64.deb  (Ubuntu/Debian)
+#   · tpvfacil-<version>.x86_64.rpm (Fedora/RHEL)
 #
 # Todos incluyen JRE 21 embebido — el usuario NO necesita Java.
 # ─────────────────────────────────────────────────────────────────
@@ -34,6 +35,18 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+      - name: Resolve version from pom.xml
+        id: version
+        working-directory: App
+        shell: pwsh
+        run: |
+          $tagVersion = "${{ github.ref_name }}".TrimStart('v')
+          $appVersion = (mvn help:evaluate "-Dexpression=project.version" -q -DforceStdout).Trim()
+          if ($appVersion -ne $tagVersion) {
+            throw "La version del pom.xml ($appVersion) no coincide con el tag ($tagVersion)."
+          }
+          "app_version=$appVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+
       - name: Build fat JAR
         working-directory: App
         run: mvn clean package -q
@@ -42,7 +55,7 @@ jobs:
         working-directory: App
         shell: pwsh
         run: |
-          $version = "${{ github.ref_name }}".TrimStart('v')
+          $version = "${{ steps.version.outputs.app_version }}"
           New-Item -ItemType Directory -Force -Path dist | Out-Null
           jpackage `
             --name "TPVFacil" `
@@ -50,7 +63,7 @@ jobs:
             --description "TPV para negocios españoles con Verifactu (AEAT)" `
             --vendor "TPVFácil" `
             --input target `
-            --main-jar tpvfacil-1.0.0-shaded.jar `
+            --main-jar "tpvfacil-$version-shaded.jar" `
             --main-class com.tpvfacil.Main `
             --type exe `
             --win-menu `
@@ -61,11 +74,18 @@ jobs:
             --java-options "--add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED" `
             --dest dist
 
+          $installer = Get-ChildItem -Path dist -Filter *.exe | Select-Object -First 1
+          if (-not $installer) {
+            throw "No se genero ningun instalador .exe en App/dist."
+          }
+          $normalized = Join-Path $installer.DirectoryName "TPVFacil-Setup-$version.exe"
+          Move-Item -Path $installer.FullName -Destination $normalized -Force
+
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-installer
-          path: App/dist/*.exe
+          path: App/dist/TPVFacil-Setup-*.exe
           retention-days: 7
 
   # ══════════════════════════════════════════
@@ -83,6 +103,18 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+      - name: Resolve version from pom.xml
+        id: version
+        working-directory: App
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          APP_VERSION="$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout | tail -n 1)"
+          if [ "$APP_VERSION" != "$TAG_VERSION" ]; then
+            echo "La version del pom.xml ($APP_VERSION) no coincide con el tag ($TAG_VERSION)." >&2
+            exit 1
+          fi
+          echo "app_version=$APP_VERSION" >> "$GITHUB_OUTPUT"
+
       - name: Build fat JAR
         working-directory: App
         run: mvn clean package -q
@@ -90,7 +122,7 @@ jobs:
       - name: Create macOS installer (.dmg)
         working-directory: App
         run: |
-          VERSION="${GITHUB_REF_NAME#v}"
+          VERSION="${{ steps.version.outputs.app_version }}"
           mkdir -p dist
           jpackage \
             --name "TPVFacil" \
@@ -98,22 +130,29 @@ jobs:
             --description "TPV para negocios españoles con Verifactu (AEAT)" \
             --vendor "TPVFácil" \
             --input target \
-            --main-jar tpvfacil-1.0.0-shaded.jar \
+            --main-jar "tpvfacil-${VERSION}-shaded.jar" \
             --main-class com.tpvfacil.Main \
             --type dmg \
             --mac-package-name "TPVFácil" \
             --java-options "--add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED" \
             --dest dist
 
+          DMG_FILE="$(find dist -maxdepth 1 -name '*.dmg' | head -n 1)"
+          if [ -z "$DMG_FILE" ]; then
+            echo "No se genero ningun instalador .dmg en App/dist." >&2
+            exit 1
+          fi
+          mv -f "$DMG_FILE" "dist/TPVFacil-${VERSION}.dmg"
+
       - name: Upload macOS artifact
         uses: actions/upload-artifact@v4
         with:
           name: macos-installer
-          path: App/dist/*.dmg
+          path: App/dist/TPVFacil-*.dmg
           retention-days: 7
 
   # ══════════════════════════════════════════
-  #  LINUX  →  .deb
+  #  LINUX  →  .deb + .rpm
   # ══════════════════════════════════════════
   build-linux:
     runs-on: ubuntu-latest
@@ -128,16 +167,30 @@ jobs:
           distribution: 'temurin'
 
       - name: Install jpackage dependencies
-        run: sudo apt-get install -y fakeroot binutils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fakeroot binutils rpm
+
+      - name: Resolve version from pom.xml
+        id: version
+        working-directory: App
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          APP_VERSION="$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout | tail -n 1)"
+          if [ "$APP_VERSION" != "$TAG_VERSION" ]; then
+            echo "La version del pom.xml ($APP_VERSION) no coincide con el tag ($TAG_VERSION)." >&2
+            exit 1
+          fi
+          echo "app_version=$APP_VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Build fat JAR
         working-directory: App
         run: mvn clean package -q
 
-      - name: Create Linux installer (.deb)
+      - name: Create Linux installers (.deb + .rpm)
         working-directory: App
         run: |
-          VERSION="${GITHUB_REF_NAME#v}"
+          VERSION="${{ steps.version.outputs.app_version }}"
           mkdir -p dist
           jpackage \
             --name "tpvfacil" \
@@ -145,7 +198,7 @@ jobs:
             --description "TPV para negocios espanoles con Verifactu (AEAT)" \
             --vendor "TPVFacil" \
             --input target \
-            --main-jar tpvfacil-1.0.0-shaded.jar \
+            --main-jar "tpvfacil-${VERSION}-shaded.jar" \
             --main-class com.tpvfacil.Main \
             --type deb \
             --linux-menu-group "Office" \
@@ -153,15 +206,40 @@ jobs:
             --java-options "--add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED" \
             --dest dist
 
+          jpackage \
+            --name "tpvfacil" \
+            --app-version "$VERSION" \
+            --description "TPV para negocios espanoles con Verifactu (AEAT)" \
+            --vendor "TPVFacil" \
+            --input target \
+            --main-jar "tpvfacil-${VERSION}-shaded.jar" \
+            --main-class com.tpvfacil.Main \
+            --type rpm \
+            --linux-menu-group "Office" \
+            --linux-shortcut \
+            --java-options "--add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED" \
+            --dest dist
+
+          DEB_FILE="$(find dist -maxdepth 1 -name '*.deb' | head -n 1)"
+          RPM_FILE="$(find dist -maxdepth 1 -name '*.rpm' | head -n 1)"
+          if [ -z "$DEB_FILE" ] || [ -z "$RPM_FILE" ]; then
+            echo "Faltan instaladores Linux en App/dist." >&2
+            exit 1
+          fi
+          mv -f "$DEB_FILE" "dist/tpvfacil_${VERSION}_amd64.deb"
+          mv -f "$RPM_FILE" "dist/tpvfacil-${VERSION}.x86_64.rpm"
+
       - name: Upload Linux artifact
         uses: actions/upload-artifact@v4
         with:
           name: linux-installer
-          path: App/dist/*.deb
+          path: |
+            App/dist/tpvfacil_*.deb
+            App/dist/tpvfacil-*.rpm
           retention-days: 7
 
   # ══════════════════════════════════════════
-  #  RELEASE  →  GitHub Release con los 3
+  #  RELEASE  →  GitHub Release con los 4
   # ══════════════════════════════════════════
   create-release:
     needs: [build-windows, build-macos, build-linux]
@@ -189,14 +267,16 @@ jobs:
 
             | Sistema | Archivo | Notas |
             |---------|---------|-------|
-            | 🪟 Windows 10/11 | `TPVFacil-Setup-*.exe` | Incluye Java — no necesitas instalarlo |
-            | 🍎 macOS 13+     | `TPVFacil-*.dmg`       | Incluye Java — no necesitas instalarlo |
-            | 🐧 Linux (Ubuntu/Debian) | `tpvfacil_*_amd64.deb` | Incluye Java — no necesitas instalarlo |
+            | 🪟 Windows 10/11 | `TPVFacil-Setup-<version>.exe` | Incluye Java — no necesitas instalarlo |
+            | 🍎 macOS 13+     | `TPVFacil-<version>.dmg`       | Incluye Java — no necesitas instalarlo |
+            | 🐧 Linux (Ubuntu/Debian) | `tpvfacil_<version>_amd64.deb` | Incluye Java — no necesitas instalarlo |
+            | 🐧 Linux (Fedora/RHEL) | `tpvfacil-<version>.x86_64.rpm` | Incluye Java — no necesitas instalarlo |
 
             ### Instalación:
             - **Windows:** ejecuta el `.exe` → si aparece SmartScreen, clic en "Más información" → "Ejecutar igualmente"
             - **macOS:** abre el `.dmg`, arrastra TPVFácil a Aplicaciones
-            - **Linux:** `sudo dpkg -i tpvfacil_*.deb`
+            - **Linux Debian/Ubuntu:** `sudo dpkg -i tpvfacil_<version>_amd64.deb`
+            - **Linux Fedora/RHEL:** `sudo rpm -i tpvfacil-<version>.x86_64.rpm`
 
             ### Primera vez:
             El asistente de configuración te guiará para introducir los datos de tu negocio.
