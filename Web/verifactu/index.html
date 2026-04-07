@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qué es Verifactu y cómo afecta a tu negocio | TPVFácil</title>
+  <meta name="description" content="Verifactu es la obligación de la AEAT de registrar cada ticket en tiempo real. Te explicamos qué es, cuándo es obligatorio y cómo cumplirlo fácilmente.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tpvfacil.es/verifactu/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Qué es Verifactu y cómo afecta a tu negocio",
+    "description": "Guía completa sobre Verifactu: qué es, cuándo es obligatorio y cómo cumplir con la AEAT.",
+    "author": { "@type": "Organization", "name": "TPVFácil" },
+    "publisher": { "@type": "Organization", "name": "TPVFácil" },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio",    "item": "https://tpvfacil.es/" },
+        { "@type": "ListItem", "position": 2, "name": "Verifactu", "item": "https://tpvfacil.es/verifactu/" }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="contenedor">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">🧾 TPVFácil</a>
+      <ul class="nav-links">
+        <li><a href="/hosteleria/">Hostelería</a></li>
+        <li><a href="/comercio/">Comercio</a></li>
+        <li><a href="/precios/">Precios</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+      <a href="/descargar/" class="btn btn-primario btn-pequeno nav-cta">Descargar gratis →</a>
+      <button class="nav-hamburger" id="btn-hamburguesa" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-movil" id="nav-movil">
+    <a href="/hosteleria/">🍽 Hostelería</a>
+    <a href="/comercio/">🛍 Comercio</a>
+    <a href="/precios/">💶 Precios</a>
+    <a href="/blog/">📝 Blog</a>
+    <a href="/descargar/" class="btn btn-primario mt-8">Descargar gratis →</a>
+  </div>
+</nav>
+
+<nav aria-label="Breadcrumb">
+  <div class="contenedor">
+    <p class="breadcrumb"><a href="/">Inicio</a> <span>›</span> Qué es Verifactu</p>
+  </div>
+</nav>
+
+<main>
+  <section class="seccion" style="padding-top:40px;">
+    <div class="contenedor" style="max-width:800px;">
+
+      <span class="badge badge-naranja" style="margin-bottom:16px;">Obligatorio desde 2025</span>
+      <h1 style="font-size:clamp(1.8rem,4vw,2.5rem); font-weight:800; margin-bottom:16px;">Qué es Verifactu y cómo afecta a tu negocio</h1>
+      <p style="font-size:1.1rem; color:var(--gris); margin-bottom:40px; line-height:1.7;">La Agencia Tributaria ha puesto en marcha un sistema obligatorio para registrar cada ticket o factura en tiempo real. Te explicamos todo lo que necesitas saber.</p>
+
+      <h2 style="font-size:1.4rem; font-weight:700; margin:32px 0 12px;">¿Qué es Verifactu?</h2>
+      <p style="line-height:1.8; color:var(--gris);">Verifactu es el sistema de la AEAT (Agencia Estatal de Administración Tributaria) que obliga a los negocios a enviar cada ticket o factura en tiempo real a los servidores de Hacienda. Cada registro lleva una firma digital y un código QR que permite al cliente verificar la autenticidad del ticket.</p>
+
+      <h2 style="font-size:1.4rem; font-weight:700; margin:32px 0 12px;">¿Por qué lo ha puesto en marcha la AEAT?</h2>
+      <p style="line-height:1.8; color:var(--gris);">El objetivo es reducir el fraude fiscal en el cobro en efectivo. Con Verifactu, cada venta queda registrada inmediatamente, lo que hace prácticamente imposible la ocultación de ingresos.</p>
+
+      <h2 style="font-size:1.4rem; font-weight:700; margin:32px 0 12px;">¿Cuándo es obligatorio?</h2>
+      <div class="aviso">
+        <strong>⚠ Obligatorio para todos los negocios</strong><br>
+        La obligación afecta a cualquier empresa o autónomo que emita facturas o tickets. El plazo de adaptación está en vigor desde 2025.
+      </div>
+
+      <h2 style="font-size:1.4rem; font-weight:700; margin:32px 0 12px;">¿Cómo funciona técnicamente?</h2>
+      <p style="line-height:1.8; color:var(--gris);">Cada ticket pasa por este proceso automático:</p>
+      <div class="pasos" style="margin-top:16px;">
+        <div class="paso"><div class="paso-num"></div><div><strong>Hash encadenado</strong><br><span class="text-gris">Se calcula una huella SHA-256 que enlaza cada ticket con el anterior, formando una cadena infalsificable.</span></div></div>
+        <div class="paso"><div class="paso-num"></div><div><strong>Firma digital</strong><br><span class="text-gris">El registro se firma con el certificado digital del negocio (el mismo que se usa para el DNI electrónico o la Sede Electrónica).</span></div></div>
+        <div class="paso"><div class="paso-num"></div><div><strong>Envío a la AEAT</strong><br><span class="text-gris">El sistema envía el XML firmado al webservice de la AEAT, que devuelve un CSV (Código Seguro de Verificación).</span></div></div>
+        <div class="paso"><div class="paso-num"></div><div><strong>QR en el ticket</strong><br><span class="text-gris">El QR permite al cliente verificar la autenticidad del ticket escaneándolo con el móvil.</span></div></div>
+      </div>
+
+      <h2 style="font-size:1.4rem; font-weight:700; margin:32px 0 12px;">¿Necesito un certificado digital?</h2>
+      <p style="line-height:1.8; color:var(--gris);">Para el modo completo de producción sí. Puedes obtenerlo gratis en la FNMT (Fábrica Nacional de Moneda y Timbre) o usar el de tu gestoría. Durante las pruebas con la demo, TPVFácil usa un entorno sandbox de la AEAT sin necesidad de certificado.</p>
+
+      <h2 style="font-size:1.4rem; font-weight:700; margin:32px 0 12px;">¿Cómo cumple TPVFácil con Verifactu?</h2>
+      <p style="line-height:1.8; color:var(--gris);">TPVFácil gestiona todo el proceso automáticamente en cada cobro: calcula el hash, firma el registro, lo envía a la AEAT e imprime el QR en el ticket. <strong>No tienes que hacer nada especial.</strong> Si no hay internet en el momento del cobro, el registro se guarda y se reenvía automáticamente en cuanto se recupera la conexión.</p>
+
+      <div class="aviso aviso-azul mt-24">
+        <strong>💡 ¿Quieres probarlo?</strong><br>
+        La demo de TPVFácil usa el entorno sandbox de la AEAT. Puedes emitir hasta 20 tickets diarios y ver todo el proceso Verifactu funcionando sin ningún coste.
+      </div>
+
+      <div style="text-align:center; margin-top:40px;">
+        <a href="/descargar/" class="btn btn-primario btn-grande">⬇ Descargar demo gratis</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="contenedor">
+    <div class="footer-grid">
+      <div><p class="footer-marca">🧾 TPVFácil</p><p class="footer-desc">Software TPV con Verifactu para negocios españoles.</p></div>
+      <div class="footer-col"><h4>Producto</h4><ul><li><a href="/hosteleria/">Hostelería</a></li><li><a href="/comercio/">Comercio</a></li><li><a href="/precios/">Precios</a></li><li><a href="/descargar/">Descargar</a></li></ul></div>
+      <div class="footer-col"><h4>Aprende</h4><ul><li><a href="/verifactu/">Qué es Verifactu</a></li><li><a href="/blog/">Blog</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="/legal/aviso-legal.html">Aviso legal</a></li><li><a href="/legal/privacidad.html">Privacidad</a></li><li><a href="/legal/cookies.html">Cookies</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 TPVFácil.</span><span><a href="/legal/privacidad.html">Privacidad</a> · <a href="/legal/cookies.html">Cookies</a></span></div>
+  </div>
+</footer>
+<div id="banner-cookies" class="oculto"><p>🍪 Usamos cookies propias. <a href="/legal/cookies.html">Más info</a></p><button id="aceptar-cookies" class="btn btn-primario btn-pequeno">Aceptar</button></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

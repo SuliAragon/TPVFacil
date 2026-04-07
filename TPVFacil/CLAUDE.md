@@ -116,7 +116,7 @@ Ver flujo completo en [[02-verifactu/02-02-flujo-tecnico]].
 | [[11-fases/11-04-fase3-comercio\|Fase 3 — Comercio]] | ✅ Completada | 2026-04-01 |
 | [[11-fases/11-05-fase4-hosteleria\|Fase 4 — Hostelería]] | ✅ Completada | 2026-04-01 |
 | [[11-fases/11-06-fase5-instalador\|Fase 5 — Instalador]] | ✅ Completada | 2026-04-01 |
-| [[11-fases/11-07-fase6-web\|Fase 6 — Web]] | ⬜ Pendiente | — |
+| [[11-fases/11-07-fase6-web\|Fase 6 — Web]] | ✅ Completada | 2026-04-01 |
 | [[11-fases/11-08-fase7-beta\|Fase 7 — Beta]] | ⬜ Pendiente | — |
 | [[11-fases/11-09-fase8-lanzamiento\|Fase 8 — Lanzamiento]] | ⬜ Pendiente | — |
 

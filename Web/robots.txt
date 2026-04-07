@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /legal/
+
+Sitemap: https://tpvfacil.es/sitemap.xml

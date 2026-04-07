@@ -15,7 +15,7 @@ Relacionado: [[CLAUDE.md]] | [[11-fases/11-01-roadmap]]
 | [[11-fases/11-04-fase3-comercio\|Fase 3 — Comercio]] | ✅ Completada | 2026-04-01 |
 | [[11-fases/11-05-fase4-hosteleria\|Fase 4 — Hostelería]] | ✅ Completada | 2026-04-01 |
 | [[11-fases/11-06-fase5-instalador\|Fase 5 — Instalador]] | ✅ Completada | 2026-04-01 |
-| [[11-fases/11-07-fase6-web\|Fase 6 — Web]] | ⬜ Pendiente | — |
+| [[11-fases/11-07-fase6-web\|Fase 6 — Web]] | ✅ Completada | 2026-04-01 |
 | [[11-fases/11-08-fase7-beta\|Fase 7 — Beta]] | ⬜ Pendiente | — |
 | [[11-fases/11-09-fase8-lanzamiento\|Fase 8 — Lanzamiento]] | ⬜ Pendiente | — |
 
@@ -198,11 +198,38 @@ Workflow configurado y subido al repo.
 
 ---
 
-## ⬜ Fases 6-8 — Resumen
+## ✅ Fase 6 — Web (Completada)
+
+### Ficheros creados
+- `Web/assets/css/global.css` — Sistema de diseño completo (variables, componentes, grid, nav, footer)
+- `Web/assets/js/main.js` — Nav scroll, hamburger, FAQ accordion, cookies banner, trackDescarga()
+- `Web/index.html` — Landing page principal (Schema: SoftwareApplication + FAQPage)
+- `Web/hosteleria/index.html` — Página de hostelería (Schema: SoftwareApplication audience bares/restaurantes)
+- `Web/comercio/index.html` — Página de comercio (Schema: SoftwareApplication audience comercio)
+- `Web/precios/index.html` — Precios (Schema: Offer 79€ + FAQPage)
+- `Web/descargar/index.html` — Descarga por SO: .exe/.dmg/.deb vía GitHub Releases
+- `Web/verifactu/index.html` — Página informativa Verifactu (Schema: Article)
+- `Web/blog/index.html` — Índice del blog
+- `Web/blog/que-es-verifactu/index.html` — Primer artículo del blog (Schema: Article)
+- `Web/legal/aviso-legal.html` — Aviso legal LSSICE
+- `Web/legal/privacidad.html` — Política de privacidad RGPD
+- `Web/legal/cookies.html` — Política de cookies
+- `Web/robots.txt` — Disallow /legal/, Sitemap apuntando a sitemap.xml
+- `Web/sitemap.xml` — 8 URLs indexadas con prioridades
+
+### Verificación ✅
+```
+Todas las páginas con SEO on-page: title, meta description, canonical, robots, Schema.org JSON-LD.
+Mobile-first. Inter font. Sin dependencias de frameworks.
+Sitemap y robots.txt listos para Google Search Console.
+```
+
+---
+
+## ⬜ Fases 7-8 — Resumen
 
 | Fase | Contenido principal |
 |------|---------------------|
-| **Fase 6 — Web** | Landing page, módulos, precios, descarga, blog |
 | **Fase 7 — Beta** | Pruebas con 2 negocios reales, bug fixes |
 | **Fase 8 — Lanzamiento** | Primera venta, campaña marketing |
 
